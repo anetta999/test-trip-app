@@ -4,8 +4,7 @@ export const TripItem = ({ trip }) => {
     <>
       <img src={img} alt={city} width="200" height="200" />
       <h2>{city}</h2>
-      <p>{startDate}</p>
-      <p>{endDate}</p>
+      <p>{`${startDate}-${endDate}`}</p>
     </>
   );
 };
