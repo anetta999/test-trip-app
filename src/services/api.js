@@ -8,7 +8,7 @@ axios.defaults.baseURL =
 
 export const fetchTripForecast = async ({ city, startDate, endDate }) => {
   const { data } = await axios.get(
-    `${city}/${startDate}/${endDate}?unitGroup=metric&include=days&key=${API_KEY}&contentType=json`
+    `${city}/${startDate}/${endDate}?iconSet=icons1&unitGroup=metric&include=days&key=${API_KEY}&contentType=json`
   );
 
   return data;
