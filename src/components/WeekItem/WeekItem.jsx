@@ -1,64 +1,9 @@
-import { format } from "date-fns";
-import clearDay from "../../assets/weather-images/clear-day.png";
-import clearNight from "../../assets/weather-images/clear-night.png";
-import cloudy from "../../assets/weather-images/cloudy.png";
-import fog from "../../assets/weather-images/fog.png";
-import partlyCloudyDay from "../../assets/weather-images/partly-cloudy-day.png";
-import partlyCloudyNight from "../../assets/weather-images/partly-cloudy-night.png";
-import rain from "../../assets/weather-images/rain.png";
-import snow from "../../assets/weather-images/snow.png";
-import wind from "../../assets/weather-images/wind.png";
-
-const getWeatherIcon = (icon) => {
-  switch (icon) {
-    case "partly-cloudy-day":
-      return partlyCloudyDay;
-    case "snow":
-      return snow;
-    case "rain":
-      return rain;
-    case "fog":
-      return fog;
-    case "wind":
-      return wind;
-    case "cloudy":
-      return cloudy;
-    case "partly-cloudy-night":
-      return partlyCloudyNight;
-    case "clear-day":
-      return clearDay;
-    case "clear-night":
-      return clearNight;
-
-    default:
-      return null;
-  }
-};
-
-const getDayOfWeek = (date) => {
-  const tripDate = new Date(date);
-  const tripDay = tripDate.getDay();
-  const daysOfWeek = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-
-  return daysOfWeek[tripDay];
-};
-
-const formatTripDate = (date) => {
-  const tripDate = new Date(date);
-  return format(tripDate, "dd.MM.yy");
-};
-
-const roundTemperature = (temp) => {
-  return Math.round(temp);
-};
+import {
+  formatTripDate,
+  getDayOfWeek,
+  roundTemperature,
+} from "../../utils/formatDate";
+import { getWeatherIcon } from "../../utils/generateWeatherIcons";
 
 export const WeekItem = ({ day }) => {
   const { icon, tempmax, tempmin, datetime } = day;
