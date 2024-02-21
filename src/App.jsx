@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { SideBar } from "./components/SideBar/SideBar";
+import { Timer } from "./components/Timer/Timer";
 import { TripList } from "./components/TripList/TripList";
 import { WeekList } from "./components/WeekList/WeekList";
 import initialTrips from "./data/trips.json";
@@ -37,7 +38,6 @@ function App() {
           return;
         }
         const { days } = await fetchTripForecast(params);
-        // console.log(days);
         setWeeks(days);
       } catch (error) {
         console.log(error);
@@ -68,7 +68,21 @@ function App() {
       <TripList trips={filteredTrips} getParams={getParams} />
       <h2>Week</h2>
       {weeks.length > 0 && <WeekList days={weeks} />}
-      <SideBar todayForecast={todayForecast} city={params.city} />
+      <aside>
+        {todayForecast && params.startDate ? (
+          <SideBar
+            todayForecast={todayForecast}
+            city={params.city}
+            startDate={params.startDate}
+          />
+        ) : (
+          <p>
+            Please, choose the city, you'd like to travel to, to see its today's
+            weather
+          </p>
+        )}
+        <Timer startDate={params.startDate} />
+      </aside>
     </>
   );
 }

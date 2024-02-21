@@ -6,12 +6,10 @@ export const SideBar = ({ todayForecast, city }) => {
   const weatherIcon = getWeatherIcon(icon);
   return (
     <>
-      <aside>
-        <h3>{getDayOfWeek(datetime)}</h3>
-        {weatherIcon && <img src={weatherIcon} alt={icon} />}
-        <p>{roundTemperature(temp)}&#8451;</p>
-        <p>{city}</p>
-      </aside>
+      <h3>{getDayOfWeek(datetime)}</h3>
+      {weatherIcon && <img src={weatherIcon} alt={icon} />}
+      <p>{roundTemperature(temp)}&#8451;</p>
+      <p>{city}</p>
     </>
   );
 };
