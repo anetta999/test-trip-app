@@ -1,9 +1,10 @@
 import { WeekItem } from "../WeekItem/WeekItem";
+import { DaysList } from "./WeekList.styled";
 
 export const WeekList = ({ days }) => {
   return (
     <>
-      <ul>
+      <DaysList>
         {days.slice(0, 7).map((day) => {
           return (
             <li key={day.datetimeEpoch}>
@@ -11,7 +12,7 @@ export const WeekList = ({ days }) => {
             </li>
           );
         })}
-      </ul>
+      </DaysList>
     </>
   );
 };

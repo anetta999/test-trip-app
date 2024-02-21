@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { SearchBar } from "./components/SearchBar/SearchBar";
+import { Section } from "./components/Section/Section";
+import {
+  BaseSection,
+  MainContainer,
+  MainTitle,
+  SecondaryTitle,
+} from "./components/Section/Section.styled";
 import { SideBar } from "./components/SideBar/SideBar";
 import { Timer } from "./components/Timer/Timer";
 import { TripList } from "./components/TripList/TripList";
@@ -63,26 +70,36 @@ function App() {
 
   return (
     <>
-      <h1>Weather Forecast</h1>
-      <SearchBar filter={filter} onSearch={searchTripsByCity} />
-      <TripList trips={filteredTrips} getParams={getParams} />
-      <h2>Week</h2>
-      {weeks.length > 0 && <WeekList days={weeks} />}
-      <aside>
-        {todayForecast && params.startDate ? (
-          <SideBar
-            todayForecast={todayForecast}
-            city={params.city}
-            startDate={params.startDate}
-          />
-        ) : (
-          <p>
-            Please, choose the city, you'd like to travel to, to see its today's
-            weather
-          </p>
-        )}
-        <Timer startDate={params.startDate} />
-      </aside>
+      <MainContainer>
+        <main>
+          <BaseSection>
+            <MainTitle>
+              Weather <span>Forecast</span>
+            </MainTitle>
+            <SearchBar filter={filter} onSearch={searchTripsByCity} />
+            <TripList trips={filteredTrips} getParams={getParams} />
+            <SecondaryTitle>Week</SecondaryTitle>
+            {weeks.length > 0 && <WeekList days={weeks} />}
+          </BaseSection>
+        </main>
+        <aside>
+          {todayForecast && params.startDate ? (
+            <div>
+              <SideBar
+                todayForecast={todayForecast}
+                city={params.city}
+                startDate={params.startDate}
+              />
+            </div>
+          ) : (
+            <p>
+              Please, choose the city, you'd like to travel to, to see its
+              today's weather
+            </p>
+          )}
+          <Timer startDate={params.startDate} />
+        </aside>
+      </MainContainer>
     </>
   );
 }

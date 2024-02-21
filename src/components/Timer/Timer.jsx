@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Time, TimerWrap, Number } from "./Timer.styled";
 
 export const Timer = ({ startDate }) => {
   const [days, setDays] = useState(0);
@@ -17,6 +18,11 @@ export const Timer = ({ startDate }) => {
       setHours(Math.max(Math.floor((time / (1000 * 60 * 60)) % 24)));
       setMinutes(Math.max(Math.floor((time / 1000 / 60) % 60)));
       setSeconds(Math.max(Math.floor((time / 1000) % 60)));
+    } else {
+      setDays(0);
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
     }
   };
 
@@ -28,24 +34,24 @@ export const Timer = ({ startDate }) => {
 
   return (
     <>
-      <div>
+      <TimerWrap>
         <p>
-          <span>{startDate ? days : "00"}</span>
-          <span>Days</span>
+          <Number>{startDate ? days : "00"}</Number>
+          <Time>Days</Time>
         </p>
         <p>
-          <span>{startDate ? hours : "00"}</span>
-          <span>Hours</span>
+          <Number>{startDate ? hours : "00"}</Number>
+          <Time>Hours</Time>
         </p>
         <p>
-          <span>{startDate ? minutes : "00"}</span>
-          <span>Minutes</span>
+          <Number>{startDate ? minutes : "00"}</Number>
+          <Time>Minutes</Time>
         </p>
         <p>
-          <span>{startDate ? seconds : "00"}</span>
-          <span>Seconds</span>
+          <Number>{startDate ? seconds : "00"}</Number>
+          <Time>Seconds</Time>
         </p>
-      </div>
+      </TimerWrap>
     </>
   );
 };
