@@ -1,7 +1,7 @@
+import { nanoid } from "nanoid";
 import { useEffect } from "react";
 import { useState } from "react";
 import { SearchBar } from "./components/SearchBar/SearchBar";
-import { Section } from "./components/Section/Section";
 import {
   BaseSection,
   MainContainer,
@@ -29,6 +29,10 @@ function App() {
     startDate: "",
     endDate: "",
   });
+
+  const addTrip = (newTrip) => {
+    setTrips((prevTrips) => [...prevTrips, { id: nanoid(), ...newTrip }]);
+  };
 
   const searchTripsByCity = (value) => {
     setFilter(value);
@@ -81,7 +85,11 @@ function App() {
               Weather <span>Forecast</span>
             </MainTitle>
             <SearchBar filter={filter} onSearch={searchTripsByCity} />
-            <TripList trips={filteredTrips} getParams={getParams} />
+            <TripList
+              trips={filteredTrips}
+              getParams={getParams}
+              addTrip={addTrip}
+            />
             <SecondaryTitle>Week</SecondaryTitle>
             {weeks.length > 0 ? (
               <WeekList days={weeks} />

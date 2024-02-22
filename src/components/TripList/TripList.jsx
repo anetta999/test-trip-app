@@ -2,8 +2,15 @@ import { formatDate } from "../../utils/formatDate";
 import { TripItem } from "../TripItem/TripItem";
 import { AddBtn, CityList, TripWrap } from "./TripList.styled";
 import { AiOutlinePlus } from "react-icons/ai";
+import { CreateTripModal } from "../CreateTripModal/CreateTripModal";
+import { useState } from "react";
 
-export const TripList = ({ trips, getParams }) => {
+export const TripList = ({ trips, getParams, addTrip }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
+  };
   return (
     <>
       <TripWrap>
@@ -25,11 +32,18 @@ export const TripList = ({ trips, getParams }) => {
             );
           })}
         </CityList>
-        <AddBtn type="button">
+        <AddBtn type="button" onClick={toggleModal}>
           <AiOutlinePlus />
           Add trip
         </AddBtn>
       </TripWrap>
+      {isModalOpen && (
+        <CreateTripModal
+          isModalOpen={isModalOpen}
+          onClose={toggleModal}
+          addTrip={addTrip}
+        />
+      )}
     </>
   );
 };
