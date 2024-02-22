@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
 
 export const DaysList = styled.ul`
+  width: 900px;
   display: flex;
-  gap: 24px;
+  gap: 30px;
 
   li {
-    flex-basis: calc(100% - 24px * 6 / 7);
+    flex-basis: calc(100% - 30px * 6 / 7);
 
     h3 {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       font-weight: 400;
       font-size: 18px;
       line-height: 1.2;
@@ -17,7 +18,7 @@ export const DaysList = styled.ul`
     }
 
     h4 {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       font-weight: 400;
       font-size: 16px;
       line-height: 1.5;

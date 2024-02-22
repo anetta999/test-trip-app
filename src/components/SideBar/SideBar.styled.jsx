@@ -40,3 +40,18 @@ export const IconWrap = styled.div`
     display: block;
   }
 `;
+
+export const DefaultAsideText = styled.p`
+  font-size: 20px;
+  line-height: 1.2;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+export const DefaultMainText = styled(DefaultAsideText)`
+  font-weight: 500;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  padding: 40px;
+  border-radius: 6px;
+  color: ${({ theme }) => theme.colors.black};
+`;

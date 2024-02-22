@@ -1,4 +1,3 @@
-// PN2VHMS4V4TT53KHFXAN7ZC2A
 import axios from "axios";
 
 const API_KEY = "PN2VHMS4V4TT53KHFXAN7ZC2A";

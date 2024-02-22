@@ -9,6 +9,10 @@ import {
   SecondaryTitle,
 } from "./components/Section/Section.styled";
 import { SideBar } from "./components/SideBar/SideBar";
+import {
+  DefaultAsideText,
+  DefaultMainText,
+} from "./components/SideBar/SideBar.styled";
 import { Timer } from "./components/Timer/Timer";
 import { TripList } from "./components/TripList/TripList";
 import { WeekList } from "./components/WeekList/WeekList";
@@ -79,24 +83,31 @@ function App() {
             <SearchBar filter={filter} onSearch={searchTripsByCity} />
             <TripList trips={filteredTrips} getParams={getParams} />
             <SecondaryTitle>Week</SecondaryTitle>
-            {weeks.length > 0 && <WeekList days={weeks} />}
+            {weeks.length > 0 ? (
+              <WeekList days={weeks} />
+            ) : (
+              <DefaultMainText>
+                Please, click on the trip above to see weather forecast for each
+                day of your trip
+              </DefaultMainText>
+            )}
           </BaseSection>
         </main>
         <aside>
-          {todayForecast && params.startDate ? (
-            <div>
+          <div>
+            {todayForecast && params.startDate ? (
               <SideBar
                 todayForecast={todayForecast}
                 city={params.city}
                 startDate={params.startDate}
               />
-            </div>
-          ) : (
-            <p>
-              Please, choose the city, you'd like to travel to, to see its
-              today's weather
-            </p>
-          )}
+            ) : (
+              <DefaultAsideText>
+                Please, choose the city, you'd like to travel to, to see its
+                today weather
+              </DefaultAsideText>
+            )}
+          </div>
           <Timer startDate={params.startDate} />
         </aside>
       </MainContainer>

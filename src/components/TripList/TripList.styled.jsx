@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 export const CityList = styled.ul`
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap;
-  justify-content: center;
   align-items: center;
 
   li {
@@ -38,8 +36,8 @@ export const AddBtn = styled.button`
 `;
 
 export const TripWrap = styled.div`
+  width: 900px;
   display: flex;
-  flex-wrap: wrap;
   gap: 24px;
   margin-bottom: 40px;
 `;
